@@ -1,7 +1,9 @@
 matrix = [
-    [1, 1, 0, 0, 0, 0, 1, 1],
-    [1, 0, 1, 1, 1, 1, 0, 1],
-    [0, 1, 1, 0, 0, 0, 1, 1]
+    [1, 0, 0, 1, 0, 1, 0, 0, 1, 1, 1, 0],
+    [1, 0, 1, 0, 0, 1, 1, 1, 1, 0, 1, 0],
+    [0, 0, 1, 0, 1, 1, 0, 1, 0, 1, 1, 1],
+    [1, 0, 1, 0, 1, 1, 0, 0, 0, 1, 0, 0],
+    [1, 0, 1, 1, 0, 0, 0, 1, 1, 1, 0, 1]
   ]
 
 
@@ -30,22 +32,23 @@ def func(visited, stack):
         if p not in visited:
             visited[p] = True
             cnt += 1
-            try:
-                if p[1] + 1 <= len(matrix[p[0]]) and matrix[p[0]][p[1] + 1] == 1:
 
-                    stack.append((p[0], p[1] + 1))
-            except:
-                pass
+            if p[1] + 1 <= len(matrix[p[0]])-1 and matrix[p[0]][p[1] + 1] == 1:
 
+                stack.append((p[0], p[1] + 1))
 
-            try:
-                if matrix[p[0] + 1][p[1]] == 1:
-                    stack.append((p[0] + 1, p[1]))
-            except:
-                pass
+            if p[0] + 1 <= len(matrix)-1 and matrix[p[0] + 1][p[1]] == 1:
+                stack.append((p[0] + 1, p[1]))
+
+            if p[1] - 1 >= 0 and matrix[p[0]][p[1] - 1] == 1:
+                stack.append((p[0], p[1] - 1))
+
+            if p[0] - 1 >= 0 and matrix[p[0] - 1][p[1]] == 1:
+                stack.append((p[0] - 1, p[1]))
+
     return cnt
 
 
-print(river_size(matrix))
+
 
 
