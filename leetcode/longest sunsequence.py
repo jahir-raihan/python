@@ -7,3 +7,5 @@ def longest_substring(s):
         res = max(res, (j-i+1))
         dic[s[j]] = j
     return res
+
+longest_substring('abcabcbb')

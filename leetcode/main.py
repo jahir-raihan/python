@@ -1,16 +1,29 @@
-# This is a sample Python script.
+dic = {
+    '1': 'I',
+    '5': 'V',
+    '10': 'X',
+    '50': 'L',
+    '100': 'C',
+    '500': 'D',
+    '1000': 'M',
 
-# Press ⌃R to execute it or replace it with your code.
-# Press Double ⇧ to search everywhere for classes, files, tool windows, actions, and settings.
+    '4': 'IV',
+    '40': 'XL',
+    '90': 'XC',
+    '9': 'IX',
+    '400': 'CD',
+    '900': 'CM'
 
-
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press ⌘F8 to toggle the breakpoint.
-
-
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+}
+s = '30'
+L = int(s)
+i = 0
+res = ""
+while L>0:
+    if s[i+1:] == len(s[i+1:])*'0':
+        temp = int(s) // int(s[i])
+        if dic[str(temp)]:
+            res = dic[str(temp)] + res
+            L -= temp
+    print(L)
+print(res)
